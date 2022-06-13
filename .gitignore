@@ -1,0 +1,14 @@
+dist
+.DS_Store
+node_modules
+coverage
+temp
+explorations
+TODOs.md
+*.log
+.idea
+dist
+package-lock.json
+# misc
+.DS_Store
+npm-debug.log*

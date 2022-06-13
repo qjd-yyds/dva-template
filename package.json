@@ -1,0 +1,41 @@
+{
+  "name": "dva-pc-template-next",
+  "version": "1.0.0",
+  "description": "给予webpack5的dva模板",
+  "main": "index.js",
+  "private": true,
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow yarn",
+    "build": "webpack",
+    "serve": "webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack5",
+    "react18"
+  ],
+  "author": "bystander",
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "css-loader": "^6.7.1",
+    "csv-loader": "^3.0.3",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.30.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^5.5.0",
+    "json5": "^2.2.1",
+    "only-allow": "^1.1.0",
+    "style-loader": "^3.3.1",
+    "toml": "^3.0.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2",
+    "xml-loader": "^1.2.1",
+    "yamljs": "^0.3.0"
+  },
+  "dependencies": {}
+}

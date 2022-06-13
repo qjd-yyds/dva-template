@@ -1,0 +1,12 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true #  去除多余空格
+insert_final_newline = true # 尾部加入一行
+end_of_line = lf
+
+[*.md]
+trim_trailing_whitespace = false

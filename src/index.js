@@ -1,7 +1,6 @@
-import './styles/test.less';
-const div = document.createElement('div');
-div.innerHTML = '大家好，我是一个div==>';
-div.className = 'font-test';
-document.body.append(div);
-
-const a = 1;
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import 'normalize.css';
+import { App } from './App';
+const root = createRoot(document.getElementById('root'));
+root.render(<App></App>);

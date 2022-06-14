@@ -8,13 +8,7 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: [
-    'prettier',
-    'eslint:recommended',
-    'plugin:unicorn/recommended',
-    'plugin:promise/recommended',
-    'plugin:react/recommended'
-  ],
+  extends: ['prettier', 'eslint:recommended', 'plugin:promise/recommended', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -22,17 +16,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', 'unicorn', 'promise'],
+  plugins: ['react', 'promise'],
   rules: {
-    'import/extensions': [
-      ERROR,
-      'ignorePackages',
-      {
-        ts: 'never',
-        tsx: 'never',
-        json: 'never',
-        js: 'never'
-      }
-    ]
+    'promise/always-return': OFF,
+    'react/react-in-jsx-scope': OFF
   }
 };

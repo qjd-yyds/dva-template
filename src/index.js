@@ -5,6 +5,6 @@ div.innerHTML = '大家好，我是一个div==>';
 div.className = 'font-test';
 document.body.append(div);
 
-const a = {
-  test: 1
-};
+let a = 12;
+
+const b = 123

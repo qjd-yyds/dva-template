@@ -12,23 +12,49 @@
     "preinstall": "npx only-allow yarn",
     "build": "webpack",
     "serve": "webpack serve",
+    "lint": "npm run lint-eslint",
+    "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js,.jsx src",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "webpack5",
     "react18"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --config .eslintrc.js"
+    ],
+    "*.{ts,tsx,js,jsx,json,html,yml,css,less,scss,md}": [
+      "prettier --write"
+    ]
+  },
   "author": "bystander",
   "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
     "@types/node": "^17.0.42",
+    "conventional-changelog-cli": "^2.2.2",
     "css-loader": "^6.7.1",
     "csv-loader": "^3.0.3",
     "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-unicorn": "^42.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "json5": "^2.2.1",
+    "lint-staged": "^13.0.1",
     "only-allow": "^1.1.0",
+    "prettier": "^2.6.2",
     "style-loader": "^3.3.1",
     "toml": "^3.0.0",
     "webpack": "^5.73.0",

@@ -5,6 +5,25 @@ const yaml = require('yamljs');
 const json5 = require('json5');
 
 const { PATHS, SERVER_HOST, SERVER_PROT, isDev } = require('../constants');
+const getCssLoaders = importLoaders => {
+  return [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: false,
+        sourceMap: isDev,
+        importLoaders
+      }
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: isDev
+      }
+    }
+  ];
+};
 module.exports = {
   entry: PATHS.PROJECT_ENTRY,
   output: {
@@ -17,30 +36,12 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: false,
-              sourceMap: isDev,
-              importLoaders: 0
-            }
-          }
-        ]
+        use: getCssLoaders(1)
       },
       {
         test: /\.less$/i,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: false,
-              sourceMap: isDev,
-              importLoaders: 1
-            }
-          },
+          ...getCssLoaders(2),
           {
             loader: 'less-loader',
             options: {
@@ -51,10 +52,16 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
+        generator: {
+          filename: 'images/[name].[contenthash:8].[ext]'
+        },
         type: 'asset/resource'
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        generator: {
+          filename: 'fonts/[name].[contenthash:8].[ext]'
+        },
         type: 'asset/resource'
       },
       // 数据

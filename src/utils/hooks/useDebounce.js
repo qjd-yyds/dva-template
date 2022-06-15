@@ -9,9 +9,10 @@ function useDebounce(fn, options = {}) {
   }
   const fnRef = useLatest(fn);
   const { wait = 1000, trailing = false, leading = true } = options;
+  // 使用useMemo缓存执行的函数
   const debounced = useMemo(() => {
     return debounce(
-      (...args) => {
+      function callback(...args) {
         fnRef.current(...args);
       },
       wait,

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import './styles/test.less';
-import { useThrottle } from './utils';
-export const App = () => {
-  const [num, setNum] = useState(0);
-  const fn = () => {
-    console.log(num);
-    setNum(num + 1);
-  };
-  const { run } = useThrottle(fn);
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+export default function App() {
   return (
-    <div className='font-test'>
-      <div>{num}</div>
-      <button onClick={run}>+1</button>
+    <div>
+      <h1>你好router-v6</h1>
+      <nav>
+        <div>
+          <Link to='/home'>home</Link>
+        </div>
+        <div>
+          <Link to='/teams'>team</Link>
+        </div>
+      </nav>
+      <Outlet></Outlet>
     </div>
   );
-};
+}

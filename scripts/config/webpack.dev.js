@@ -13,15 +13,18 @@ module.exports = merge(common, {
       protocol: 'udp'
     },
     client: {
+      // 编译报错或者警告，全屏覆盖
       overlay: {
         errors: true,
         warnings: false
       },
+      logging: 'info',
       reconnect: 3,
       // errors: true,
       // warnings: false,
       progress: true
     },
+    liveReload: false,
     host: '0.0.0.0',
     hot: true,
     compress: true, // 启动zip

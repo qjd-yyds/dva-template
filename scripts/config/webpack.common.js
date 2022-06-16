@@ -1,11 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 const toml = require('toml');
 const yaml = require('yamljs');
 const json5 = require('json5');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const { PATHS, SERVER_HOST, SERVER_PROT, isDev } = require('../constants');
+const WebpackBar = require('webpackbar');
 // 处理css
 const getCssLoaders = importLoaders => {
   return [
@@ -28,6 +28,7 @@ const getCssLoaders = importLoaders => {
 };
 // 处理plugins
 const getPlugins = () => {
+  const { transformer, formatter } = require('../resolveLoaderError');
   const plugins = [
     new HtmlWebpackPlugin({
       template: PATHS.PROJECT_HTML,
@@ -51,11 +52,15 @@ const getPlugins = () => {
           }
     }),
     new FriendlyErrorsWebpackPlugin({
-      clearConsole: true,
       compilationSuccessInfo: {
-        messages: [`应用已经就绪，运行在${SERVER_HOST}:${SERVER_PROT}`],
-        notes: ['编译成功，请在浏览器中访问']
-      }
+        messages: [`You application is running here ${SERVER_HOST}:${SERVER_PROT}`],
+        notes: ['Some additional notes to be displayed upon successful compilation']
+      },
+      additionalTransformers: [transformer],
+      additionalFormatters: [formatter]
+    }),
+    new WebpackBar({
+      color: 'green'
     })
   ];
   if (!isDev) {

@@ -6,6 +6,7 @@ export default function Teams() {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
   const location = useLocation();
+  console.log(location,"location");
   // console.log(searchParams.getAll('filter'));
   // console.log(location, 'location==>');
   const invoice = getInvoice(parseInt(params.id, 10));

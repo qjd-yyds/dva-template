@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const { PATHS, SERVER_HOST, SERVER_PROT } = require('../constants');
-
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
@@ -37,5 +36,6 @@ module.exports = merge(common, {
     },
     port: SERVER_PROT
   },
+  stats: 'errors-only',
   devtool: 'eval-source-map'
 });

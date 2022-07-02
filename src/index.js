@@ -6,6 +6,7 @@ import 'normalize.css';
 import App from './App';
 import Teams from './page/Teams';
 import Team from './page/Teams/Team';
+import Chart from './page/echarts';
 const root = createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
@@ -23,6 +24,7 @@ root.render(
           ></Route>
           <Route path=':id' element={<Team></Team>}></Route>
         </Route>
+        <Route path='chart' element={<Chart></Chart>}></Route>
         <Route
           path='*'
           element={

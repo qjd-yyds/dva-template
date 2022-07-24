@@ -1,4 +1,4 @@
-import { CHANGE_INPUT, ADD, DEL } from './actionTypes';
+import { CHANGE_INPUT, ADD, DEL, GET_LIST, GET_SAGA_LIST } from './actionTypes';
 // 纯函数，返回的参数完全由入参决定，和外部因素无关
 const defaultState = {
   defaultValue: '写点什么东西',
@@ -28,6 +28,16 @@ export default (state = defaultState, action) => {
         list: state.list.filter((item, index) => {
           return index !== action.value;
         })
+      };
+    case GET_LIST:
+      return {
+        ...state,
+        list: action.list
+      };
+    case GET_SAGA_LIST:
+      return {
+        ...state,
+        list: action.list
       };
   }
   return state;

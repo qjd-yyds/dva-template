@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import store from '~/store';
-import { changeInputAction, addItemAction, delItemAction } from '~/store/actions';
+import { changeInputAction, getToDoSagaList, addItemAction, delItemAction, getToDoList } from '~/store/actions';
 import TodoListUi from '~/components/todoListUi';
 export default function Home() {
   const state = store.getState();
   const [num, setNum] = useState(1);
+  useEffect(() => {
+    const action = getToDoSagaList();
+    store.dispatch(action);
+  }, []);
   const storeChange = () => {
     setNum(num + 1);
   };
